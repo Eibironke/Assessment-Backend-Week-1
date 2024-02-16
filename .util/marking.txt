@@ -1,10 +1,14 @@
 ============================= test session starts ==============================
 platform linux -- Python 3.11.8, pytest-8.0.0, pluggy-1.4.0
 rootdir: /home/runner/work/Assessment-Backend-Week-1/Assessment-Backend-Week-1
-collected 0 items / 1 error
+Friday
+collected 85 items
 
-!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
-=============================== 1 error in 0.07s ===============================
+days_api/test_api.py ..........F..............................FFFFFFFFFF [ 60%]
+FFFFFFFFF                                                                [ 70%]
+days_api/test_date_functions.py .........................                [100%]
+
+======================== 20 failed, 65 passed in 0.26s =========================
 ************* Module app
 days_api/app.py:32:0: C0116: Missing function or method docstring (missing-function-docstring)
 days_api/app.py:42:8: W0702: No exception type(s) specified (bare-except)
@@ -14,13 +18,11 @@ days_api/app.py:57:4: W0702: No exception type(s) specified (bare-except)
 days_api/app.py:62:0: C0116: Missing function or method docstring (missing-function-docstring)
 days_api/app.py:62:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
 days_api/app.py:7:0: W0611: Unused Response imported from flask (unused-import)
-************* Module conftest
-days_api/conftest.py:5:0: E0401: Unable to import 'days_api.app' (import-error)
 ************* Module date_functions
 days_api/date_functions.py:14:8: W0707: Consider explicitly re-raising using 'except Exception as exc' and 'raise ValueError('Unable to convert value to datetime.') from exc' (raise-missing-from)
 days_api/date_functions.py:25:8: W0707: Consider explicitly re-raising using 'except Exception as exc' and 'raise TypeError('Datetimes required.') from exc' (raise-missing-from)
 days_api/date_functions.py:33:8: W0707: Consider explicitly re-raising using 'except Exception as exc' and 'raise TypeError('Datetime required.') from exc' (raise-missing-from)
 
 ------------------------------------------------------------------
-Your code has been rated at 9.26/10 (previous run: 9.26/10, +0.00)
+Your code has been rated at 9.49/10 (previous run: 9.49/10, +0.00)
 
