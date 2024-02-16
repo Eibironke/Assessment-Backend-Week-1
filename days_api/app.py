@@ -32,13 +32,16 @@ def index():
 def get_time_between():
     if request.method == "POST":
         data = request.json
+
         if "first" not in data or "last" not in data:
             return jsonify({"error": "Missing required data."}), 400
         try:
             first = convert_to_datetime(data['first'])
             last = convert_to_datetime(data['last'])
             output = get_days_between(first, last)
+            add_to_history(request)
             return jsonify({'days': output}), 200
+
         except:
             return jsonify({"error": "Unable to convert value to datetime."}), 400
 
@@ -52,23 +55,26 @@ def get_weekday():
     try:
         day_dt = convert_to_datetime(data["date"])
         day = get_day_of_week_on(day_dt)
-
+        add_to_history(request)
         return jsonify({"weekday": day}), 200
     except:
         return jsonify({"error": "Unable to convert value to datetime."}), 400
 
 
-@app.route("/history", methods=["GET", "POST", "DELETE"])
+@app.route("/history", methods=["GET", "DELETE"])
 def get_history():
     if request.method == "GET":
         args = request.args.to_dict()
-        number = args.get("number", 5)
+        number = args.get("number", '5')
+
+        if not number.isdigit() or 0 >= int(number) or int(number) > 20:
+            return jsonify({"error": "Number must be an integer between 1 and 20."}), 400
+
         req_list = []
-        if 0 > number or number > 20 or not app_history:
-            return jsonify({"error": True, "message": "Can only return 1-20"}), 400
-        for each in range(0, number):
-            req_list.append(app_history[each])
-        return jsonify({'records': req_list}), 200
+        if app_history:
+            for each in range(0, int(number)):
+                req_list.append(app_history[each])
+        return jsonify(req_list), 200
 
 
 if __name__ == "__main__":
