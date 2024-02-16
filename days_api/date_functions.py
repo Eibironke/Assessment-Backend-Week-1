@@ -8,8 +8,8 @@ SECONDS_IN_A_DAY = 86400
 def convert_to_datetime(date: str) -> datetime:
     """Function that takes date string and return in datetime format"""
     try:
-        x = datetime.strptime(date, '%d.%m.%Y')
-        return x
+        date_x = datetime.strptime(date, '%d.%m.%Y')
+        return date_x
     except:
         raise ValueError("Unable to convert value to datetime.")
 
