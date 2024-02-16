@@ -2,7 +2,7 @@
 
 import pytest
 
-from days_api.app import app
+from app import app
 
 
 @pytest.fixture
